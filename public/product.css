@@ -65,7 +65,7 @@
 .add-cart-btn {
     flex: 1;
     padding: 15px;
-    background-color: #2ecc71; /* Green color */
+    background-color: #2ecc71; 
     color: white;
     border: none;
     font-size: 16px;
@@ -82,7 +82,7 @@
 .buy-now-btn {
     flex: 1;
     padding: 15px;
-    background-color: #f85606; /* Daraz Orange */
+    background-color: #f85606; 
     color: white;
     border: none;
     font-size: 16px;
