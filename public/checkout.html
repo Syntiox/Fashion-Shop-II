@@ -104,30 +104,29 @@
     </div>
 
     <script>
-        // 1. පේජ් එක ලෝඩ් වෙද්දී කාට් එකේ විස්තර දානවා
+     
         document.addEventListener('DOMContentLoaded', () => {
     const cart = JSON.parse(localStorage.getItem('myCart')) || [];
     const itemList = document.getElementById('order-items');
     
     let subTotal = 0;
-    let totalShipping = 0; // 1. අලුත් වේරියබල් එක (ෂිපින් එකතු කරන්න)
+    let totalShipping = 0; 
 
     if (cart.length === 0) {
         window.location.href = 'index.html'; 
     }
 
-    // කලින් තිබ්බ ටික මකලා අලුතින් ලෝඩ් වෙන්න
+
     itemList.innerHTML = '';
 
     cart.forEach(item => {
         const total = item.price * item.quantity;
         
-        // 2. අදාල අයිතමයේ ෂිපින් ගාණ හදනවා (Shipping x Quantity)
-        // (ෂිපින් නැත්නම් 0 ගන්නවා)
+      
         const shipping = (item.shipping || 0) * item.quantity;
 
         subTotal += total;
-        totalShipping += shipping; // මුළු ෂිපින් එකට එකතු කරනවා
+        totalShipping += shipping; // මුළු shipping එකට එකතු කරනවා  මචන් 
 
         itemList.innerHTML += `
             <div class="order-item">
@@ -143,7 +142,7 @@
     // 4. HTML එකට අගයන් දානවා
     document.getElementById('checkout-subtotal').innerText = `Rs. ${subTotal}.00`;
     
-    // වැදගත්: ඔයාගේ checkout.html එකේ "Shipping" පෙන්නන තැනට id="checkout-shipping" කියලා දාන්න ඕනේ
+
     const shippingEl = document.getElementById('checkout-shipping');
     if(shippingEl) {
         shippingEl.innerText = `Rs. ${totalShipping}.00`;
@@ -152,24 +151,17 @@
     document.getElementById('checkout-total').innerText = `Rs. ${grandTotal}.00`;
 });
 
-        // 2. Order Button එක එබුවම වෙන දේ
+        // 2. Order Button ේ
         function placeOrder(e) {
-            e.preventDefault(); // ෆෝම් එක රීලෝඩ් වෙන එක නවත්තනවා
+            e.preventDefault(); // ෆෝම් එක රීලෝඩ් වෙන එක නවත්තනවා rukshan
 
-            // මෙතන ඇත්තටම සල්ලි කැපෙන Code එකක් නෑ (Assignment නිසා)
-            // අපි බොරුවට "Order Success" කියලා පෙන්නනවා.
-            
-            // 1. කාට් එක හිස් කරනවා
+ 
+    
             localStorage.removeItem('myCart');
 
-            // 2. Success Modal එක පෙන්නනවා
+            // 2. Success Modal
             document.getElementById('success-modal').style.display = 'flex';
         }
-
-
     </script>
-
-
-
 </body>
 </html>
