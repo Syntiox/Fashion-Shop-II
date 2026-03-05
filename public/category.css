@@ -8,12 +8,12 @@
 
 /* --- Sidebar Styling --- */
 .sidebar {
-    width: 250px; /* Sidebar එකේ පළල */
+    width: 250px; 
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    flex-shrink: 0; /* ස්ක්‍රීන් එක පොඩි වුනාම මේක හැකිලෙන්න එපා */
+    flex-shrink: 0; 
 }
 
 .sidebar h3 {
@@ -85,7 +85,7 @@
 
 /* --- Content Area Styling --- */
 .content {
-    flex: 1; /* ඉතුරු ඉඩ ඔක්කොම ගන්න */
+    flex: 1; 
 }
 
 .top-bar {
@@ -112,7 +112,7 @@
     cursor: pointer;
 }
 
-/* Product Grid (Main CSS එකේ තිබ්බ එකමයි) */
+/* Product Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive Grid */
@@ -184,7 +184,7 @@
     padding: 10px;
     margin-bottom: 8px;
     background-color: white;
-    border: 1px solid #f85606; /* Daraz Orange Border */
+    border: 1px solid #f85606; 
     color: #f85606;
     border-radius: 4px;
     cursor: pointer;
@@ -205,10 +205,10 @@
 .back-btn {
     display: flex;
     align-items: center;
-    gap: 10px; /* ඊතලය සහ වචනය අතර ඉඩ */
+    gap: 10px; 
     background: none;
     border: none;
-    color: #757575; /* තද අළු පාට */
+    color: #757575; 
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -219,8 +219,8 @@
 }
 
 .back-btn:hover {
-    color: #f85606; /* මවුස් එක ගෙනිච්චම ඩරාස් පාට එනවා */
-    transform: translateX(-3px); /* පොඩ්ඩක් වමට පනිනවා */
+    color: #f85606; 
+    transform: translateX(-3px); 
 }
 
 .back-btn i {
