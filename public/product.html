@@ -69,16 +69,16 @@
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
-        const productId = urlParams.get('id'); // URL එකෙන් ID එක ගන්නවා
-        let currentProduct = {}; // දැනට පෙන්නන බඩුව
+        const productId = urlParams.get('id'); 
+        let currentProduct = {};
 
         async function loadProductDetails() {
             try {
                 const response = await fetch('products.json');
                 const products = await response.json();
                 
-                // ID එක ගැලපෙන බඩුව හොයාගන්නවා (String vs Number පරිස්සමෙන්)
-                // අපි ID එක timestamp එකක් විදිහට දැම්මේ (Number), ඒ නිසා `==` පාවිච්චි කරමු
+                // ID එක ගැලපෙන බඩුව හොයාගන්නවා 
+                // rukshan ID එක timestamp එකක් විදිහට දැම්මේ (Number), ඒ නිසා `==` පාවිච්චි කරපන්
                 currentProduct = products.find(p => p.id == productId);
 
                 if (currentProduct) {
@@ -93,25 +93,24 @@ const stockEl = document.getElementById('stock-display');
 const addBtn = document.querySelector('.add-cart-btn');
 const buyBtn = document.querySelector('.buy-now-btn');
 
-// Stock එක 0 ට වඩා වැඩිද බලනවා
+
 if (currentProduct.stock > 0) {
     stockEl.innerText = `In Stock: ${currentProduct.stock} items left`;
-    stockEl.style.color = "#27ae60"; // කොළ පාට
+    stockEl.style.color = "#27ae60"; 
     
-    // බටන් වැඩ කරනවා
     addBtn.disabled = false;
     buyBtn.disabled = false;
     addBtn.style.opacity = "1";
     addBtn.style.cursor = "pointer";
 } else {
-    // බඩු ඉවරයි නම්
-    stockEl.innerText = "Out of Stock";
-    stockEl.style.color = "#e74c3c"; // රතු පාට
     
-    // බටන් Disable කරනවා
+    stockEl.innerText = "Out of Stock";
+    stockEl.style.color = "#e74c3c"; 
+    
+    // බටන් Disable 
     addBtn.disabled = true;
     buyBtn.disabled = true;
-    addBtn.style.background = "#ccc"; // අළු පාට
+    addBtn.style.background = "#ccc"; 
     buyBtn.style.background = "#ccc";
     addBtn.innerText = "Unavailable";
     buyBtn.style.cursor = "not-allowed";
@@ -125,22 +124,21 @@ if (currentProduct.stock > 0) {
             }
         }
 
-        // Add to Cart බටන් එක එබුවම
+
         function handleAddToCart() {
             if (currentProduct.id) {
-                addToCart(currentProduct); // cart.js එකේ තියෙන function එක කෝල් කරනවා
+                addToCart(currentProduct); 
             }
         }
 
         // Buy Now Button Logic
 function handleBuyNow() {
     if (currentProduct.id) {
-        // 1. මුලින්ම බඩුව කාට් එකට දාගන්නවා
-        // (අපි කලින් හදපු addToCart function එකම පාවිච්චි කරනවා, හැබැයි notification පෙන්නන්න කලින් පේජ් එක මාරු වෙනවා)
+       
+        // (අපි  හදපු addToCart function එකම පාවිච්චි කරනවා, හැබැයි notification පෙන්නන්න කලින් පේජ් එක මාරු වෙනවා), ලේඩියට මෙහෙම හැදුවේ මචන් උබට ඔනෙ නම් වෙනස් කරපන් ආයේ බයි කරන බටන් එකක් හදලා එකට දාපන්
         
         let cart = JSON.parse(localStorage.getItem('myCart')) || [];
         
-        // බලමු දැනටමත් මේක කාට් එකේ තියෙනවද කියලා
         const existingItem = cart.find(item => item.id === currentProduct.id);
 
         if (existingItem) {
@@ -150,10 +148,10 @@ function handleBuyNow() {
             cart.push(currentProduct);
         }
 
-        // කාට් එක සේව් කරනවා
+
         localStorage.setItem('myCart', JSON.stringify(cart));
 
-        // 2. දැන් කෙලින්ම Checkout එකට යවනවා
+        //  Checkout 
         window.location.href = 'checkout.html';
     }
 }
