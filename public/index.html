@@ -49,7 +49,7 @@
                 const container = document.getElementById('product-container');
                 container.innerHTML = ''; 
 
-                // බඩු ටික කැටගරි වලට වෙන් කරගන්නවා
+
                 const categories = {};
                 products.forEach(product => {
                     if (!categories[product.category]) {
@@ -58,7 +58,7 @@
                     categories[product.category].push(product);
                 });
 
-                // දැන් එක එක කැටගරි එක අරන් පෙන්නමු
+           
                 for (const [categoryName, items] of Object.entries(categories)) {
                     
                     const previewItems = items.slice(0, 2); 
@@ -95,16 +95,8 @@
                 console.error('Error:', error);
             }
         }
-
-        // පේජ් එක ලෝඩ් වුන ගමන් රන් කරන්න
         loadProducts();
-
-
-        
     </script>
     <script src="cart.js"></script>
-
-
-
 </body>
 </html>
