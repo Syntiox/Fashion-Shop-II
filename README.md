@@ -30,14 +30,14 @@ npm install express multer cors body-parser
 * **Adding Products:** `add.html` පිටුව පාවිච්චි කරලා අලුත් කැටගරි සහ භාණ්ඩ ඇතුළත් කරන්න පුළුවන්. ඒ දත්ත `products.json` සහ `categories.json` වල ගබඩා වෙනවා.
 * **Customization:** `public` folder එක ඇතුළේ තියෙන HTML, CSS සහ JS files  ඕනෙ විදිහට වෙනස් කරලා UI එක අලුත් කරගන්න පුළුවන්.
 
-## ⚠️ වැදගත් අනතුරු ඇඟවීම (License Warning)
-මෙම project එකේ ඇති `LICENSE` file එක කිසිම හේතුවක් මත වෙනස් කරන්න හෝ මැකීමට උත්සාහ කරන්න එපා. බලපත්‍රය වෙනස් කළහොත් සර්වර් එක "License Failed!" ලෙස පෙන්වා ක්‍රියාවිරහිත වනු ඇත.
-
 ### 📂 Project Structure එක ගැන කෙටියෙන්
 * `server.js`: ප්‍රධාන backend සර්වර් එක.
 * `public/`: වෙබ් අඩවියේ UI එකට අදාළ සියලුම files (HTML, CSS, JS).
 * `run.bat`: සර්වර් එක ලේසියෙන්ම රන් කරන script එක.
 
+## 📜 License
+
+This project is licensed under the MIT License.
 
 <div align="center">
   <hr>
