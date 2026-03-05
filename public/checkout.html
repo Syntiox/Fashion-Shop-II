@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo">MY STORE</div>
+            <div class="help-icon" onclick="window.location.href='help.html'" style="cursor: pointer; color: white; font-size: 22px; margin-left: 15px; display: flex; align-items: center;" title="Help Center">
+                 <i class="fas fa-headset"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container checkout-container">
+        
+        <button class="back-btn" onclick="window.location.href='cart.html'">
+            <i class="fas fa-arrow-left"></i> Back to Cart
+        </button>
+
+        <form id="checkoutForm" onsubmit="placeOrder(event)">
+            <div class="row">
+                
+                <div class="col-7">
+                    <h3>Billing Details</h3>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" placeholder="No. 123, Main Street" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" placeholder="Colombo" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="077 123 4567" required>
+                    </div>
+
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <label class="radio-container">
+                            <input type="radio" name="payment" checked> 
+                            <span class="checkmark"></span>
+                            Cash on Delivery (COD)
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="payment"> 
+                            <span class="checkmark"></span>
+                            Credit / Debit Card (Visa/Master)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-5">
+                    <div class="order-summary">
+                        <h3>Your Order</h3>
+                        <div id="order-items">
+                            </div>
+                        <hr>
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="checkout-subtotal">Rs. 0.00</span>
+                        </div>
+                        <div class="summary-line">
+                             <span>Shipping</span>
+                             <span id="checkout-shipping">Rs. 0.00</span>
+                        </div>
+                        <div class="summary-line total">
+                            <span>Total</span>
+                            <span id="checkout-total">Rs. 0.00</span>
+                        </div>
+                        
+                        <button type="submit" class="place-order-btn">PLACE ORDER</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="check-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h2>Order Placed!</h2>
+            <p>Thank you for your purchase. Your order has been received.</p>
+            <button onclick="window.location.href='index.html'">Continue Shopping</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. පේජ් එක ලෝඩ් වෙද්දී කාට් එකේ විස්තර දානවා
+        document.addEventListener('DOMContentLoaded', () => {
+    const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+    const itemList = document.getElementById('order-items');
+    
+    let subTotal = 0;
+    let totalShipping = 0; // 1. අලුත් වේරියබල් එක (ෂිපින් එකතු කරන්න)
+
+    if (cart.length === 0) {
+        window.location.href = 'index.html'; 
+    }
+
+    // කලින් තිබ්බ ටික මකලා අලුතින් ලෝඩ් වෙන්න
+    itemList.innerHTML = '';
+
+    cart.forEach(item => {
+        const total = item.price * item.quantity;
+        
+        // 2. අදාල අයිතමයේ ෂිපින් ගාණ හදනවා (Shipping x Quantity)
+        // (ෂිපින් නැත්නම් 0 ගන්නවා)
+        const shipping = (item.shipping || 0) * item.quantity;
+
+        subTotal += total;
+        totalShipping += shipping; // මුළු ෂිපින් එකට එකතු කරනවා
+
+        itemList.innerHTML += `
+            <div class="order-item">
+                <span>${item.name} (x${item.quantity})</span>
+                <span>Rs. ${total}</span>
+            </div>
+        `;
+    });
+
+    // 3. Grand Total එක හදනවා (Subtotal + Total Shipping)
+    const grandTotal = subTotal + totalShipping;
+
+    // 4. HTML එකට අගයන් දානවා
+    document.getElementById('checkout-subtotal').innerText = `Rs. ${subTotal}.00`;
+    
+    // වැදගත්: ඔයාගේ checkout.html එකේ "Shipping" පෙන්නන තැනට id="checkout-shipping" කියලා දාන්න ඕනේ
+    const shippingEl = document.getElementById('checkout-shipping');
+    if(shippingEl) {
+        shippingEl.innerText = `Rs. ${totalShipping}.00`;
+    }
+
+    document.getElementById('checkout-total').innerText = `Rs. ${grandTotal}.00`;
+});
+
+        // 2. Order Button එක එබුවම වෙන දේ
+        function placeOrder(e) {
+            e.preventDefault(); // ෆෝම් එක රීලෝඩ් වෙන එක නවත්තනවා
+
+            // මෙතන ඇත්තටම සල්ලි කැපෙන Code එකක් නෑ (Assignment නිසා)
+            // අපි බොරුවට "Order Success" කියලා පෙන්නනවා.
+            
+            // 1. කාට් එක හිස් කරනවා
+            localStorage.removeItem('myCart');
+
+            // 2. Success Modal එක පෙන්නනවා
+            document.getElementById('success-modal').style.display = 'flex';
+        }
+
+
+    </script>
+
+
+
+</body>
+</html>

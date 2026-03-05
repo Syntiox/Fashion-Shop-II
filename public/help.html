@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | My Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Help Center එකටම විශේෂ වූ Styles */
+        body {
+            background-color: #f5f5f5; /* Screenshot එකේ වගේ ලා අළු පාට */
+        }
+
+        /* 1. Hero Section (තැඹිලි පාට කෑල්ල) */
+        .help-hero {
+            background: linear-gradient(135deg, #f85606 0%, #ff7e39 100%);
+            padding: 60px 20px 100px; /* පල්ලෙහාට ඉඩ තියනවා කාඩ්ස් උඩට ගන්න */
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .help-hero h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .search-box-help {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box-help input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .search-box-help button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background: #f85606;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* 2. Main Container */
+        .help-container {
+            max-width: 1000px;
+            margin: -60px auto 40px; /* Hero එක උඩට පන්නනවා */
+            padding: 0 20px;
+        }
+
+        /* 3. Quick Actions Cards (Self Service Tools) */
+        .quick-actions {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .action-item {
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .action-item:hover {
+            background: #fff0e6;
+            transform: translateY(-5px);
+        }
+
+        .action-item i {
+            font-size: 30px;
+            color: #f85606;
+            margin-bottom: 10px;
+        }
+
+        .action-item p {
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        /* 4. Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+            border-left: 5px solid #f85606;
+            padding-left: 15px;
+        }
+
+        .help-desc {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: #f85606;
+            background: #fff9f5;
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: #ffeae0;
+            color: #f85606;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .card-info h4 { margin: 0 0 5px; color: #333; }
+        .card-info p { margin: 0; color: #666; font-size: 14px; }
+        .card-info a { 
+            color: #f85606; 
+            text-decoration: none; 
+            font-weight: bold; 
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        /* Navbar Override for this page */
+        .navbar { background: white !important; box-shadow: none !important; }
+        .logo { color: #f85606 !important; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar" style="padding: 15px 50px;">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer; font-size: 24px; font-weight: bold;">MY STORE</div>
+            <div style="margin-left: auto;">
+                <button onclick="window.location.href='index.html'" style="padding: 8px 20px; border: 1px solid #f85606; background: white; color: #f85606; border-radius: 5px; cursor: pointer;">Back to Home</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="help-hero">
+        <h1>Hi, how can we help?</h1>
+        <div class="search-box-help">
+            <input type="text" placeholder="Search for questions (e.g. Return Policy)...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <div class="help-container">
+        
+        <div class="quick-actions">
+            <div class="action-item">
+                <i class="fas fa-box-open"></i>
+                <p>Track My Order</p>
+            </div>
+            <div class="action-item">
+                <i class="fas fa-undo-alt"></i>
+                <p>Return Order</p>
+            </div>
+            <div class="action-item">
+                <i class="fas fa-key"></i>
+                <p>Reset Password</p>
+            </div>
+            <div class="action-item">
+                <i class="fas fa-user-circle"></i>
+                <p>My Profile</p>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3 class="section-title">Still need help?</h3>
+            <p class="help-desc">
+                If you couldn't find the answer in our self-service tools, don't worry. Our dedicated support team is here to assist you with any inquiries regarding orders, products, or shipping.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h4>Call Us</h4>
+                        <p>Available 9AM - 6PM</p>
+                        <a href="tel:+94712345678">071 234 5678</a>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="icon-box">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="card-info">
+                        <h4>Email Support</h4>
+                        <p>We reply within 24 hours</p>
+                        <a href="mailto:support@mystore.com">support@mystore.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button onclick="window.location.href='https://wa.me/94712345678'" style="background: #25d366; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-size: 16px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #888; font-size: 14px;">
+        &copy; 2026 My Store. All Rights Reserved.
+    </footer>
+
+</body>
+</html>

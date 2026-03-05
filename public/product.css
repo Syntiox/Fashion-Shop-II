@@ -1,0 +1,118 @@
+/* product.css */
+.product-container {
+    display: flex;
+    gap: 40px;
+    background: white;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+/* Image Section */
+.product-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* Info Section */
+.product-info {
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #212121;
+}
+
+.category-tag {
+    color: #0088cc;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.price-box {
+    font-size: 32px;
+    color: #f85606;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.currency {
+    font-size: 20px;
+    vertical-align: top;
+}
+
+/* Buttons */
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.add-cart-btn {
+    flex: 1;
+    padding: 15px;
+    background-color: #2ecc71; /* Green color */
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.add-cart-btn:hover {
+    background-color: #27ae60;
+}
+
+.buy-now-btn {
+    flex: 1;
+    padding: 15px;
+    background-color: #f85606; /* Daraz Orange */
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.buy-now-btn:hover {
+    background-color: #d34805;
+}
+
+/* Description */
+.description h3 {
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.description p {
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+    }
+}
+

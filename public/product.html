@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="product.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer;">MY STORE</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" style="background:red; color:white; border-radius:50%; padding:2px 6px; font-size:12px; display:none;">0</span>
+            </div>
+            <div class="help-icon" onclick="window.location.href='help.html'" style="cursor: pointer; color: white; font-size: 22px; margin-left: 15px; display: flex; align-items: center;" title="Help Center">
+                 <i class="fas fa-headset"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container product-container">
+        <div class="product-image">
+            <img id="p-img" src="" alt="Product Image">
+        </div>
+
+        <div class="product-info">
+            <h1 id="p-name">Loading...</h1>
+            <p class="category-tag" id="p-cat">Category</p>
+            
+            <div class="price-box">
+                <span class="currency">Rs.</span>
+               <span id="p-price">0.00</span>
+           </div>
+
+
+           <p id="p-shipping-display" style="color: #555; font-size: 14px; margin-bottom: 20px;">
+               Delivery: <span id="p-shipping" style="color:#000; font-weight:bold;">Loading...</span>
+           </p>
+
+           <div id="stock-display" style="margin-bottom: 15px; font-weight: bold; font-size: 16px;">
+              Checking stock...
+           </div>
+
+            <div class="actions">
+             <button class="add-cart-btn" onclick="handleAddToCart()">Add to Cart</button>
+    
+             <button class="buy-now-btn" onclick="handleBuyNow()">Buy Now</button>
+            </div>
+
+            <hr>
+
+            <div class="description">
+                <h3>Product Details</h3>
+                <p id="p-desc">Loading details...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id'); // URL එකෙන් ID එක ගන්නවා
+        let currentProduct = {}; // දැනට පෙන්නන බඩුව
+
+        async function loadProductDetails() {
+            try {
+                const response = await fetch('products.json');
+                const products = await response.json();
+                
+                // ID එක ගැලපෙන බඩුව හොයාගන්නවා (String vs Number පරිස්සමෙන්)
+                // අපි ID එක timestamp එකක් විදිහට දැම්මේ (Number), ඒ නිසා `==` පාවිච්චි කරමු
+                currentProduct = products.find(p => p.id == productId);
+
+                if (currentProduct) {
+                    document.getElementById('p-img').src = currentProduct.image;
+                    document.getElementById('p-name').innerText = currentProduct.name;
+                    document.getElementById('p-cat').innerText = currentProduct.category;
+                    document.getElementById('p-price').innerText = currentProduct.price;
+                    const shippingFee = currentProduct.shipping || 0;
+                    document.getElementById('p-shipping').innerText = `Rs. ${shippingFee}.00`;
+                    // --- Stock Logic ---
+const stockEl = document.getElementById('stock-display');
+const addBtn = document.querySelector('.add-cart-btn');
+const buyBtn = document.querySelector('.buy-now-btn');
+
+// Stock එක 0 ට වඩා වැඩිද බලනවා
+if (currentProduct.stock > 0) {
+    stockEl.innerText = `In Stock: ${currentProduct.stock} items left`;
+    stockEl.style.color = "#27ae60"; // කොළ පාට
+    
+    // බටන් වැඩ කරනවා
+    addBtn.disabled = false;
+    buyBtn.disabled = false;
+    addBtn.style.opacity = "1";
+    addBtn.style.cursor = "pointer";
+} else {
+    // බඩු ඉවරයි නම්
+    stockEl.innerText = "Out of Stock";
+    stockEl.style.color = "#e74c3c"; // රතු පාට
+    
+    // බටන් Disable කරනවා
+    addBtn.disabled = true;
+    buyBtn.disabled = true;
+    addBtn.style.background = "#ccc"; // අළු පාට
+    buyBtn.style.background = "#ccc";
+    addBtn.innerText = "Unavailable";
+    buyBtn.style.cursor = "not-allowed";
+}
+                    document.getElementById('p-desc').innerText = currentProduct.description;
+                } else {
+                    document.querySelector('.product-container').innerHTML = '<h2>Product not found!</h2>';
+                }
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+
+        // Add to Cart බටන් එක එබුවම
+        function handleAddToCart() {
+            if (currentProduct.id) {
+                addToCart(currentProduct); // cart.js එකේ තියෙන function එක කෝල් කරනවා
+            }
+        }
+
+        // Buy Now Button Logic
+function handleBuyNow() {
+    if (currentProduct.id) {
+        // 1. මුලින්ම බඩුව කාට් එකට දාගන්නවා
+        // (අපි කලින් හදපු addToCart function එකම පාවිච්චි කරනවා, හැබැයි notification පෙන්නන්න කලින් පේජ් එක මාරු වෙනවා)
+        
+        let cart = JSON.parse(localStorage.getItem('myCart')) || [];
+        
+        // බලමු දැනටමත් මේක කාට් එකේ තියෙනවද කියලා
+        const existingItem = cart.find(item => item.id === currentProduct.id);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            currentProduct.quantity = 1;
+            cart.push(currentProduct);
+        }
+
+        // කාට් එක සේව් කරනවා
+        localStorage.setItem('myCart', JSON.stringify(cart));
+
+        // 2. දැන් කෙලින්ම Checkout එකට යවනවා
+        window.location.href = 'checkout.html';
+    }
+}
+
+
+        loadProductDetails();
+    </script>
+
+
+
+</body>
+</html>

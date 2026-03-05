@@ -1,0 +1,281 @@
+/* cart.css */
+.cart-page {
+    padding-top: 20px;
+}
+
+.cart-layout {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: flex-start; /* උඩට සමාන්තරව තියන්න */
+}
+
+/* --- Left Side: Item List --- */
+.cart-items {
+    flex: 2; /* 2/3 ඉඩ ගන්නවා */
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.cart-item {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.item-details h4 {
+    margin-bottom: 5px;
+    color: #333;
+    font-size: 16px;
+}
+
+.item-details .price {
+    color: #f85606;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* +/- Buttons */
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-controls button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.qty-controls button:hover {
+    background: #e0e0e0;
+}
+
+/* Right Side Actions */
+.item-actions {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.remove-btn:hover {
+    color: #f00; /* මකන කොට රතු පාට වෙනවා */
+}
+
+/* --- Right Side: Summary --- */
+.cart-summary {
+    flex: 1; /* 1/3 ඉඩ ගන්නවා */
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.cart-summary h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+.summary-row.total {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f85606;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #d04905;
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #777;
+}
+
+.empty-msg a {
+    color: #f85606;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+    .cart-layout {
+        flex-direction: column;
+    }
+    
+    .cart-items, .cart-summary {
+        width: 100%;
+    }
+}
+
+
+/* Warning Modal Styles */
+.modal {
+    display: none; /* මුලින්ම පේන්නෑ */
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); /* කළු පාට පසුබිම */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 350px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: popUp 0.3s ease-out;
+}
+
+.warning-icon { font-size: 50px; color: #f39c12; margin-bottom: 15px; }
+.modal-content h2 { color: #333; margin-bottom: 10px; }
+.modal-content p { color: #666; margin-bottom: 20px; }
+
+.modal-actions { display: flex; gap: 10px; justify-content: center; }
+
+.cancel-btn {
+    padding: 10px 20px;
+    background: #e0e0e0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.proceed-btn {
+    padding: 10px 20px;
+    background: #f85606;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes popUp {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Floating Help Button Style */
+.help-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #f85606;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 2001; /* අනිත් ඒවට උඩින් පේන්න */
+    transition: 0.3s;
+}
+
+.help-fab:hover { transform: scale(1.1); background: #d44905; }
+
+/* Help Modal Popup Styles */
+.help-content {
+    max-width: 350px !important;
+    padding: 0 !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: #f85606;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.help-body { padding: 20px; text-align: left; }
+
+.help-item { margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+
+.chat-btn {
+    width: 100%;
+    padding: 12px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

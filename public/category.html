@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Category</title>
+    <link rel="stylesheet" href="main.css"> <link rel="stylesheet" href="category.css"> <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <div class="logo" onclick="window.location.href='index.html'" style="cursor:pointer;">MY STORE</div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search in Store...">
+                <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+             <i class="fas fa-shopping-cart"></i>
+             <span id="cart-count" style="background:red; color:white; border-radius:50%; padding:2px 6px; font-size:12px; display:none; position:absolute; top:-5px; right:-10px;">0</span>
+            </div>
+            <div class="help-icon" onclick="window.location.href='help.html'" style="cursor: pointer; color: white; font-size: 22px; margin-left: 15px; display: flex; align-items: center;" title="Help Center">
+                 <i class="fas fa-headset"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        
+    <aside class="sidebar">
+        <button class="back-btn" onclick="window.location.href='index.html'">
+        <i class="fas fa-arrow-left"></i> Back to Home
+        </button>
+
+        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+
+     <h3>Filters</h3>
+    
+     <div class="filter-group">
+         <h4>Price Range</h4>
+        <div class="price-inputs">
+            <input type="number" id="minPrice" placeholder="Min">
+            <span>-</span>
+            <input type="number" id="maxPrice" placeholder="Max">
+        </div>
+        <button class="apply-btn" onclick="applyFilters()">Apply Filter</button>
+     </div>
+
+     <div class="filter-group">
+        <h4>Sort By Price</h4>
+        <button class="sort-btn" onclick="sortProducts('low-high')">
+            <i class="fas fa-sort-amount-down-alt"></i> Low to High
+        </button>
+        <button class="sort-btn" onclick="sortProducts('high-low')">
+            <i class="fas fa-sort-amount-up"></i> High to Low
+        </button>
+     </div>
+
+     <div class="filter-group">
+        <h4>Quick Filter</h4>
+        <div class="quick-links">
+            <button onclick="setPrice(0, 2000)">Rs. 0 - 2000</button>
+            <button onclick="setPrice(2000, 5000)">Rs. 2000 - 5000</button>
+            <button onclick="setPrice(5000, 10000)">Rs. 5000 - 10000</button>
+        </div>
+     </div>
+    </aside>
+
+        <main class="content">
+            
+            <div class="top-bar">
+                <h2 id="page-title">Loading...</h2>
+                <div class="sort-box">
+                    <label>Sort By:</label>
+                    <select id="sortSelect" onchange="sortProducts()">
+                        <option value="default">Best Match</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                </div>
+        </main>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('cat');
+        const searchParam = urlParams.get('search');
+        
+        // ඩේටා තියාගන්න Variables
+        let allProducts = []; // ඔක්කොම බඩු
+        let filteredProducts = []; // ෆිල්ටර් වුනාට පස්සේ බඩු
+
+        // 1. මුලින්ම බඩු ටික ලෝඩ් කරගමු
+        async function loadCategoryItems() {
+            try {
+                const response = await fetch('products.json');
+                allProducts = await response.json();
+                
+                // URL එක අනුව මුලින්ම ෆිල්ටර් කරගමු
+                if (categoryParam) {
+                    document.getElementById('page-title').innerText = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
+                    filteredProducts = allProducts.filter(p => p.category === categoryParam);
+                } else if (searchParam) {
+                    document.getElementById('page-title').innerText = `Search: "${searchParam}"`;
+                    filteredProducts = allProducts.filter(p => 
+                        p.name.toLowerCase().includes(searchParam.toLowerCase()) || 
+                        p.description.toLowerCase().includes(searchParam.toLowerCase())
+                    );
+                } else {
+                    filteredProducts = allProducts; // මුකුත් නැත්නම් ඔක්කොම
+                }
+
+                renderProducts(filteredProducts);
+
+            } catch (error) {
+                console.error("Error loading products", error);
+            }
+        }
+
+        // 2. බඩු ටික ස්ක්‍රීන් එකට දාන ෆන්ෂන් එක
+        function renderProducts(products) {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            if (products.length === 0) {
+                grid.innerHTML = '<p style="padding:20px;">No products found.</p>';
+                return;
+            }
+
+            // category.html එකේ renderProducts function එක ඇතුලේ
+products.forEach(product => {
+    const card = `
+        <div class="product-card" onclick="window.location.href='product.html?id=${product.id}'">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="card-details">
+                <div class="p-name">${product.name}</div>
+                <div class="p-price">Rs. ${product.price}</div>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+        </div>
+    `;
+    grid.innerHTML += card;
+});
+        }
+
+        // --- Updated Sorting Logic ---
+function sortProducts(direction) {
+    // direction කියන්නේ 'low-high' ද 'high-low' ද කියන එක
+    
+    // මුල් ලිස්ට් එකේ කොපියක් ගමු
+    let sortedList = [...filteredProducts];
+
+    if (direction === 'low-high') {
+        // අඩුවේ ඉඳන් වැඩි වෙන්න
+        sortedList.sort((a, b) => a.price - b.price);
+    } else if (direction === 'high-low') {
+        // වැඩි ඉඳන් අඩු වෙන්න
+        sortedList.sort((a, b) => b.price - a.price);
+    }
+
+    // බඩු ටික ආයේ පෙන්නන්න
+    renderProducts(sortedList);
+}
+
+        // 4. Filtering Logic (Price Range)
+        function applyFilters() {
+            const min = document.getElementById('minPrice').value || 0;
+            const max = document.getElementById('maxPrice').value || 9999999;
+
+            // දැනට තියෙන ලිස්ට් එකෙන් ෆිල්ටර් කරමු
+            const priceFiltered = filteredProducts.filter(p => 
+                p.price >= min && p.price <= max
+            );
+
+            renderProducts(priceFiltered);
+        }
+
+        // 5. Quick Range Buttons (බටන් එබුවම ඉන්පුට් වලට අගයන් වැටෙන්න)
+        function setPrice(min, max) {
+            document.getElementById('minPrice').value = min;
+            document.getElementById('maxPrice').value = max;
+            applyFilters();
+        }
+
+        // සර්ච් බටන් එක
+        function performSearch() {
+            const val = document.getElementById('searchInput').value;
+            if(val) window.location.href = `category.html?search=${val}`;
+        }
+
+        loadCategoryItems();
+    </script>
+    <script src="cart.js"></script>
+
+</body>
+</html>
