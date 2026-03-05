@@ -38,4 +38,27 @@ npm install express multer cors body-parser
 * `public/`: වෙබ් අඩවියේ UI එකට අදාළ සියලුම files (HTML, CSS, JS).
 * `run.bat`: සර්වර් එක ලේසියෙන්ම රන් කරන script එක.
 
+
+  ---
+<div align="center">
+  <hr>
+  <p>Made with ❤️ by</p>
+  
+  <a href="https://github.com/ruk-zh4n">
+    <img src="https://github.com/ruk-zh4n.png" width="60" style="border-radius: 50%;" alt="ruk-zh4n">
+    <br>
+    <b>ruk-zh4n</b>
+  </a>
+  
+  <br><br>
+  
+  <p>Maintained by</p>
+  <a href="https://github.com/Syntiox">
+    <img src="https://github.com/Syntiox.png" width="50" style="border-radius: 10px;" alt="Syntiox Organization">
+    <br>
+    <b>Syntiox</b>
+  </a>
+  <hr>
+</div>
+
   
