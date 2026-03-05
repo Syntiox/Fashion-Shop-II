@@ -6,7 +6,7 @@ body { background-color: #f5f5f5; }
 
 /* Header Styles */
 header {
-    background-color: #f85606; /* Daraz Orange */
+    background-color: #f85606; 
     padding: 15px 0;
     position: sticky;
     top: 0;
@@ -121,7 +121,7 @@ header {
     margin-bottom: 5px;
     white-space: nowrap; 
     overflow: hidden;
-    text-overflow: ellipsis; /* දිග නමක් තිබ්බොත් කපනවා */
+    text-overflow: ellipsis; 
 }
 
 .p-price {
@@ -147,25 +147,25 @@ header {
     color: white;
 }
 
-/* බටන් දෙක එක ළඟ තියාගන්න */
+
 .card-actions {
     display: flex;
     gap: 8px;
     margin-top: 10px;
 }
 
-/* Help බටන් එකේ style එක */
+
 .help-btn {
-    background-color: #6c757d; /* අළු පාටක් */
+    background-color: #6c757d; 
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
-    flex: 1; /* බටන් දෙකම එකම සයිස් එකට ගන්න */
+    flex: 1; 
 }
 
 .buy-btn {
-    flex: 2; /* Buy Now බටන් එක ටිකක් ලොකුවට තියන්න */
+    flex: 2; 
 }
 
