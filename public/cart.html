@@ -82,24 +82,24 @@
     let cart = JSON.parse(localStorage.getItem('myCart')) || [];
     const container = document.getElementById('cart-items-container');
     
-    // කාට් එක හිස් නම්
+
     if (cart.length === 0) {
         container.innerHTML = '<div class="empty-msg">Your cart is empty! <a href="index.html">Go Shopping</a></div>';
-        updateTotals(0, 0); // ගණන් දෙකම බිංදුවයි
+        updateTotals(0, 0); 
         return;
     }
 
     container.innerHTML = '';
     let subTotal = 0;
-    let totalShipping = 0; // මුළු ෂිපින් ගාණ එකතු කරන්න variable එකක්
+    let totalShipping = 0; 
 
     cart.forEach((item, index) => {
-        // 1. අයිතමයේ මුළු වටිනාකම (මිල x ගාණ)
+
         const itemTotal = item.price * item.quantity;
         subTotal += itemTotal;
 
-        // 2. අයිතමයේ ෂිපින් ගාණ (ෂිපින් x ගාණ)
-        // (ෂිපින් එකක් නැත්නම් 0 ක් ගන්නවා - item.shipping || 0)
+
+ 
         const itemShipping = (item.shipping || 0) * item.quantity;
         totalShipping += itemShipping;
 
@@ -124,84 +124,78 @@
         container.innerHTML += itemHTML;
     });
 
-    // 3. අන්තිමට Subtotal එකයි Shipping Total එකයි දෙකම යවනවා
+
     updateTotals(subTotal, totalShipping);
 }
 
-        // 1. Quantity එක වෙනස් කිරීම (+/-)
+  
         function changeQty(index, change) {
             let cart = JSON.parse(localStorage.getItem('myCart')) || [];
             
             if (cart[index].quantity + change > 0) {
                 cart[index].quantity += change;
                 localStorage.setItem('myCart', JSON.stringify(cart));
-                loadCart();      // ලිස්ට් එක රීෆ්‍රෙෂ් කරනවා
-                updateCartCount(); // හෙඩර් එකේ නම්බර් එක අප්ඩේට් කරනවා
+                loadCart();  
+                updateCartCount(); 
             }
         }
-            // අලුත් Warning Logic එක
+        
 function checkPriceAndProceed() {
     let cart = JSON.parse(localStorage.getItem('myCart')) || [];
     let total = 0;
     
-    // මුළු ගාණ හදනවා
+
     cart.forEach(item => {
         total += (item.price * item.quantity) + ((item.shipping || 0) * item.quantity);
     });
 
-    const limit = 50000; // ලිමිට් එක
+    const limit = 20000; 
 
     if (total > limit) {
-        // Modal එක පෙන්නනවා
+    
         document.getElementById('warning-msg').innerText = `Your total is Rs. ${total}.00. Do you want to proceed?`;
         document.getElementById('warning-modal').style.display = 'flex';
     } else {
-        // ගාණ අඩු නම් කෙලින්ම යනවා
+       
         window.location.href = 'checkout.html';
     }
 }
 
-// Modal එක වහන ෆන්ෂන්
+
 function closeWarning() {
     document.getElementById('warning-modal').style.display = 'none';
 }
 
-// Modal එකෙන් Checkout එකට යන ෆන්ෂන්
+// Modal Checkout 
 function proceedToCheckout() {
     window.location.href = 'checkout.html';
 }
-        // 2. අයිතමයක් අයින් කිරීම (Remove)
+       
         function removeItem(index) {
             let cart = JSON.parse(localStorage.getItem('myCart')) || [];
-            cart.splice(index, 1); // අදාල එක ලිස්ට් එකෙන් මකනවා
+            cart.splice(index, 1); 
             localStorage.setItem('myCart', JSON.stringify(cart));
             loadCart();
             updateCartCount();
         }
 
-        // 3. ටෝටල් එක හදන එක
+
         function updateTotals(subTotal, totalShipping) {
-    // Subtotal පෙන්නනවා
+    // Subtotal 
     document.getElementById('sub-total').innerText = `Rs. ${subTotal}.00`;
     
-    // Shipping Fee එක වෙනම පෙන්නනවා (මේ ID එක HTML එකේ තියෙන්න ඕනේ)
+    // Shipping Fee 
     const shippingEl = document.getElementById('shipping-fee');
     if(shippingEl) {
         shippingEl.innerText = `Rs. ${totalShipping}.00`;
     }
 
-    // Grand Total = බඩු වල ගාණ + ෂිපින් ගාණ
+    
     const grandTotal = subTotal + totalShipping;
     document.getElementById('grand-total').innerText = `Rs. ${grandTotal}.00`;
 }
 
-        // පේජ් එක ලෝඩ් වෙද්දී රන් කරන්න
         loadCart();
-
-
     </script>
-
-
-
 </body>
 </html>
