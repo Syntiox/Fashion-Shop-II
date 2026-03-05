@@ -80,7 +80,7 @@
     
     
     <script>
-        // --- 1. පේජ් එක ලෝඩ් වෙද්දී Categories ගෙන්න ගන්න කොටස ---
+        // --- 1. Categories ---
         document.addEventListener('DOMContentLoaded', () => {
             loadCategories();
         });
@@ -93,10 +93,10 @@
                 
                 const selectBox = document.getElementById('category');
                 
-                // පරණ ඔප්ෂන් ටික මකලා මුල් එක විතරක් තියනවා
+
                 selectBox.innerHTML = '<option value="">Select a Category...</option>';
 
-                // Server එකෙන් ආපු ලිස්ට් එක Dropdown එකට දානවා
+      
                 categories.forEach(cat => {
                     const option = document.createElement('option');
                     option.value = cat;
@@ -108,7 +108,7 @@
             }
         }
 
-        // --- 2. අලුත් Category එකක් ඇඩ් කරන කොටස ---
+        // --- 2. new Category  ---
         async function addNewCategory() {
             const input = document.getElementById('new-cat-input');
             const categoryName = input.value.trim();
@@ -126,8 +126,8 @@
                 
                 if (response.ok) {
                     showNotification("Category Added Successfully!", 'success');
-                    input.value = ''; // Input එක හිස් කරනවා
-                    loadCategories(); // ලිස්ට් එක ආයේ අප්ඩේට් කරනවා
+                    input.value = ''; // Input null
+                    loadCategories(); 
                 } else {
                     alert(result.message || "Error adding category");
                 }
@@ -136,14 +136,13 @@
             }
         }
 
-        // --- 3. පරණ ෆයිල් නම පෙන්නන කෑල්ල ---
         document.getElementById('image').addEventListener('change', function(){
             const fileName = this.files[0] ? this.files[0].name : "Click or Drag to Upload Image";
             document.getElementById('file-name').innerText = fileName;
             document.getElementById('file-name').style.color = "#f85606";
         });
 
-        // --- 4. Notification Function එක ---
+        // --- 4. Notification Function ---
         function showNotification(message, type = 'success') {
             const container = document.getElementById('toast-container');
             const icon = type === 'success' ? '<i class="fas fa-check-circle" style="color:#10b981"></i>' : '<i class="fas fa-exclamation-circle" style="color:#ef4444"></i>';
@@ -163,7 +162,7 @@
             }, 3000);
         }
 
-        // --- 5. Product Submit කරන කොටස ---
+        // ---  Product Submit ---
         document.getElementById('productForm').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -207,10 +206,5 @@
 
 
     </script>
-
-
-
-       
-
 </body>
 </html>
