@@ -90,17 +90,17 @@
         const categoryParam = urlParams.get('cat');
         const searchParam = urlParams.get('search');
         
-        // ඩේටා තියාගන්න Variables
-        let allProducts = []; // ඔක්කොම බඩු
-        let filteredProducts = []; // ෆිල්ටර් වුනාට පස්සේ බඩු
+ 
+        let allProducts = []; 
+        let filteredProducts = []; 
 
-        // 1. මුලින්ම බඩු ටික ලෝඩ් කරගමු
+
         async function loadCategoryItems() {
             try {
                 const response = await fetch('products.json');
                 allProducts = await response.json();
                 
-                // URL එක අනුව මුලින්ම ෆිල්ටර් කරගමු
+                // URL 
                 if (categoryParam) {
                     document.getElementById('page-title').innerText = categoryParam.charAt(0).toUpperCase() + categoryParam.slice(1);
                     filteredProducts = allProducts.filter(p => p.category === categoryParam);
@@ -111,7 +111,7 @@
                         p.description.toLowerCase().includes(searchParam.toLowerCase())
                     );
                 } else {
-                    filteredProducts = allProducts; // මුකුත් නැත්නම් ඔක්කොම
+                    filteredProducts = allProducts; 
                 }
 
                 renderProducts(filteredProducts);
@@ -121,7 +121,7 @@
             }
         }
 
-        // 2. බඩු ටික ස්ක්‍රීන් එකට දාන ෆන්ෂන් එක
+       
         function renderProducts(products) {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
@@ -131,7 +131,6 @@
                 return;
             }
 
-            // category.html එකේ renderProducts function එක ඇතුලේ
 products.forEach(product => {
     const card = `
         <div class="product-card" onclick="window.location.href='product.html?id=${product.id}'">
@@ -149,9 +148,9 @@ products.forEach(product => {
 
         // --- Updated Sorting Logic ---
 function sortProducts(direction) {
-    // direction කියන්නේ 'low-high' ද 'high-low' ද කියන එක
+
     
-    // මුල් ලිස්ට් එකේ කොපියක් ගමු
+
     let sortedList = [...filteredProducts];
 
     if (direction === 'low-high') {
@@ -162,7 +161,7 @@ function sortProducts(direction) {
         sortedList.sort((a, b) => b.price - a.price);
     }
 
-    // බඩු ටික ආයේ පෙන්නන්න
+
     renderProducts(sortedList);
 }
 
@@ -171,7 +170,7 @@ function sortProducts(direction) {
             const min = document.getElementById('minPrice').value || 0;
             const max = document.getElementById('maxPrice').value || 9999999;
 
-            // දැනට තියෙන ලිස්ට් එකෙන් ෆිල්ටර් කරමු
+
             const priceFiltered = filteredProducts.filter(p => 
                 p.price >= min && p.price <= max
             );
@@ -179,14 +178,14 @@ function sortProducts(direction) {
             renderProducts(priceFiltered);
         }
 
-        // 5. Quick Range Buttons (බටන් එබුවම ඉන්පුට් වලට අගයන් වැටෙන්න)
+        // 5. Quick Range Buttons 
         function setPrice(min, max) {
             document.getElementById('minPrice').value = min;
             document.getElementById('maxPrice').value = max;
             applyFilters();
         }
 
-        // සර්ච් බටන් එක
+ 
         function performSearch() {
             const val = document.getElementById('searchInput').value;
             if(val) window.location.href = `category.html?search=${val}`;
