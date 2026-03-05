@@ -47,8 +47,9 @@ npm install express multer cors body-parser
 * `run.bat`: සර්වර් එක ලේසියෙන්ම රන් කරන script එක.
 
 ## 📜 License
-
 This project is licensed under the MIT License.
+
+## URL=https://github.com/Syntiox/shop-project
 
 <div align="center">
   <hr>
