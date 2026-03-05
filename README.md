@@ -22,8 +22,8 @@ npm install express multer cors body-parser
 ### 4. වෙබ් අඩවියට පිවිසීම (Accessing the Site)
 සර්වර් එක සාර්ථකව start වුණාම, ඔයාගේ browser එකේ පහත URLs පාවිච්චි කරන්න පුළුවන්:
 
-* **ප්‍රධාන පිටුව (Home Page):** [http://localhost:3000/index.html](http://localhost:3000/index.html)
-* **බාන්ඩ සහ කැටගරි ඇඩ් කරන පිටුව:** [http://localhost:3000/add.html](http://localhost:3000/add.html)
+* **ප්‍රධාන URL එක (Home Page):** [http://localhost:3000/index.html](http://localhost:3000/index.html)
+* **ඇදුම් සහ කැටගරි ඇඩ් කරන URL එක:** [http://localhost:3000/add.html](http://localhost:3000/add.html)
 
 ### 5. ප්‍රධාන විශේෂාංග
 * **Main Entry:** `index.html` හරහා තමයි site එකේ main layout එක පේන්නේ.
@@ -31,7 +31,7 @@ npm install express multer cors body-parser
 * **Customization:** `public` folder එක ඇතුළේ තියෙන HTML, CSS සහ JS files  ඕනෙ විදිහට වෙනස් කරලා UI එක අලුත් කරගන්න පුළුවන්.
 
 ## ⚠️ වැදගත් අනතුරු ඇඟවීම (License Warning)
-මෙම project එකේ ඇති `LICENSE` file එක කිසිම හේතුවක් මත වෙනස් කරන්න හෝ මැකීමට උත්සාහ කරන්න එපා. `server.js` එක ඇතුළේ මෙම file එකේ integrity එක check කරන code එකක් ඇතුළත් කර තිබෙනවා. බලපත්‍රය වෙනස් කළහොත් සර්වර් එක "License Failed!" ලෙස පෙන්වා ක්‍රියාවිරහිත වනු ඇත.
+මෙම project එකේ ඇති `LICENSE` file එක කිසිම හේතුවක් මත වෙනස් කරන්න හෝ මැකීමට උත්සාහ කරන්න එපා. බලපත්‍රය වෙනස් කළහොත් සර්වර් එක "License Failed!" ලෙස පෙන්වා ක්‍රියාවිරහිත වනු ඇත.
 
 ### 📂 Project Structure එක ගැන කෙටියෙන්
 * `server.js`: ප්‍රධාන backend සර්වර් එක.
