@@ -39,25 +39,21 @@ npm install express multer cors body-parser
 * `run.bat`: සර්වර් එක ලේසියෙන්ම රන් කරන script එක.
 
 
-  ---
 <div align="center">
   <hr>
-  <p>Made with ❤️ by</p>
-  
-  <a href="https://github.com/ruk-zh4n">
-    <img src="https://github.com/ruk-zh4n.png" width="60" style="border-radius: 50%;" alt="ruk-zh4n">
-    <br>
-    <b>ruk-zh4n</b>
-  </a>
-  
-  <br><br>
-  
-  <p>Maintained by</p>
-  <a href="https://github.com/Syntiox">
-    <img src="https://github.com/Syntiox.png" width="50" style="border-radius: 10px;" alt="Syntiox Organization">
-    <br>
-    <b>Syntiox</b>
-  </a>
+  <p>
+    <b>Developer:</b> 
+    <a href="https://github.com/ruk-zh4n">
+      <img src="https://github.com/ruk-zh4n.png" width="35" style="border-radius: 50%; vertical-align: middle;" alt="ruk-zh4n">
+      ruk-zh4n
+    </a>
+    &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+    <b>Organization:</b> 
+    <a href="https://github.com/Syntiox">
+      <img src="https://github.com/Syntiox.png" width="35" style="border-radius: 6px; vertical-align: middle;" alt="Syntiox">
+      Syntiox
+    </a>
+  </p>
   <hr>
 </div>
 
