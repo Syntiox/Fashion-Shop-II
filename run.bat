@@ -7,7 +7,7 @@ echo           WELCOME TO SELLER CENTER SERVER
 echo ---------------------------------------------------
 echo.
 echo [!] Checking System Integrity...
-echo [!] Starting Node.js Server on Port 3000...
+echo [!] Starting Node.js Server on Port 3000..
 echo.
 
 node server.js
