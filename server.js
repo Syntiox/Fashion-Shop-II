@@ -5,10 +5,10 @@ const multer = require('multer');
 const cors = require('cors');
 
 
-// --- 2. SERVER SETUP ---
+//SERVER SETUP
 const app = express();
 app.use(cors());
-app.use(express.static('public')); // Frontend Files
+app.use(express.static('public')); 
 app.use(express.json()); 
 
 
@@ -118,6 +118,6 @@ app.post('/add-product', upload.single('image'), (req, res) => {
     });
 });
 
-// --- 6. START SERVER ---
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
