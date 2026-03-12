@@ -53,24 +53,34 @@ This project is licensed under the MIT License.
 
 <div align="center">
   <hr>
-  <p>
-    <b>👨‍💻 Developers:</b> &nbsp;
-    <a href="https://github.com/sh4lu-z" style="text-decoration: none;">
-      <img src="https://github.com/sh4lu-z.png" width="35" style="border-radius: 50%; vertical-align: middle;" alt="ruk-zh4n">
-      ruk-zh4n
-    </a>
-    &nbsp;&nbsp;➕&nbsp;&nbsp;
-    <a href="https://github.com/ruk-zh4n" style="text-decoration: none;">
-      <img src="https://github.com/ruk-zh4n.png" width="35" style="border-radius: 50%; vertical-align: middle;" alt="Dev 2">
-      Second Dev Name
-    </a>
-    &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
-    <b>🏢 Organization:</b> &nbsp;
-    <a href="https://github.com/Syntiox" style="text-decoration: none;">
-      <img src="https://github.com/Syntiox.png" width="35" style="border-radius: 8px; vertical-align: middle;" alt="Syntiox">
-      Syntiox
-    </a>
-  </p>
+  <h3>🤝 Meet the Team & Organization</h3>
+  <table align="center" style="border: none;">
+    <tr align="center">
+      <td width="150" style="border: none;"><b>👨‍💻 Developer</b></td>
+      <td width="150" style="border: none;"><b>👨‍💻 Developer</b></td>
+      <td width="150" style="border: none;"><b>🏢 Organization</b></td>
+    </tr>
+    <tr align="center">
+      <td style="border: none;">
+        <a href="https://github.com/ruk-zh4n" style="text-decoration: none;">
+          <img src="https://github.com/ruk-zh4n.png" width="50" style="border-radius: 50%;" alt="ruk-zh4n"><br>
+          <sub><b>ruk-zh4n</b></sub>
+        </a>
+      </td>
+      <td style="border: none;">
+        <a href="https://github.com/sh4lu-z" style="text-decoration: none;">
+          <img src="https://github.com/sh4lu-z.png" width="50" style="border-radius: 50%;" alt="Dev 2"><br>
+          <sub><b>sh4lu-z</b></sub>
+        </a>
+      </td>
+      <td style="border: none;">
+        <a href="https://github.com/Syntiox" style="text-decoration: none;">
+          <img src="https://github.com/Syntiox.png" width="50" style="border-radius: 10%;" alt="Syntiox"><br>
+          <sub><b>Syntiox</b></sub>
+        </a>
+      </td>
+    </tr>
+  </table>
   <hr>
 </div>
 
