@@ -54,15 +54,20 @@ This project is licensed under the MIT License.
 <div align="center">
   <hr>
   <p>
-    <b>Developer:</b> 
-    <a href="https://github.com/ruk-zh4n">
-      <img src="https://github.com/ruk-zh4n.png" width="35" style="border-radius: 50%; vertical-align: middle;" alt="ruk-zh4n">
+    <b>👨‍💻 Developers:</b> &nbsp;
+    <a href="https://github.com/sh4lu-z" style="text-decoration: none;">
+      <img src="https://github.com/sh4lu-z.png" width="35" style="border-radius: 50%; vertical-align: middle;" alt="ruk-zh4n">
       ruk-zh4n
     </a>
-    &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-    <b>Organization:</b> 
-    <a href="https://github.com/Syntiox">
-      <img src="https://github.com/Syntiox.png" width="35" style="border-radius: 6px; vertical-align: middle;" alt="Syntiox">
+    &nbsp;&nbsp;➕&nbsp;&nbsp;
+    <a href="https://github.com/ruk-zh4n" style="text-decoration: none;">
+      <img src="https://github.com/ruk-zh4n.png" width="35" style="border-radius: 50%; vertical-align: middle;" alt="Dev 2">
+      Second Dev Name
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;
+    <b>🏢 Organization:</b> &nbsp;
+    <a href="https://github.com/Syntiox" style="text-decoration: none;">
+      <img src="https://github.com/Syntiox.png" width="35" style="border-radius: 8px; vertical-align: middle;" alt="Syntiox">
       Syntiox
     </a>
   </p>
