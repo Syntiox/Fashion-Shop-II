@@ -1,50 +1,47 @@
 
-# Fashion-Shop-II - Seller Center & E-Commerce 
+# Fashion-Shop-II - Seller Center & E-Commerce
+
+Fashion-Shop-II is a comprehensive e-commerce platform that integrates a Node.js backend with a modern,
+responsive frontend. It features a dedicated Seller Center for dynamic product and category management,
+making it an ideal template for full-stack web development.
+
+### 🚀 Features
+
+1. Full-Stack Integration: Powered by Node.js and Express.js backend.
+2. Seller Center: Manage and add products dynamically via add.html.
+3. Image Uploads: Efficient image handling using Multer.
+4. Data Persistence: Uses JSON files (products.json and categories.json) for lightweight data storage.
+5. Responsive UI: Fully mobile-friendly interface with search and cart functionality.
 
 
-මේක shopping site එකක backend සහ frontend එක එකතු කරලා හදපු project එකක්. මේක local machine එකක run කරලා අවශ්‍ය විදිහට test කරන්න පුළුවන්.
+### 🛠️ Installation & Setup
 
-
-### 1. Node.js ඉන්ස්ටල් කරගන්නා ආකාරය
-
-මේ project එක run කරන්න ඔයාගේ පරිගණකයේ Node.js තියෙන්නම ඕනේ.
-1. [nodejs.org](https://nodejs.org/) වෙබ් අඩවියට යන්න.
-2. එතන තියෙන **LTS (Recommended for most users)** කියන version එක download කරලා install කරගන්න.
-3. ඉන්ස්ටල් වුණාද බලන්න terminal එකේ `node -v` කමාන්ඩ් එක ගහලා බලන්න.
-
-
-
-### 2. අවශ්‍ය Packages Setup කිරීම
-
-Project එකට අවශ්‍ය dependencies (Express, Multer, Cors වගේ දේවල්) මුලින්ම ඉන්ස්ටල් කරගන්න ඕනේ. ඒ සඳහා අදාල ෆොල්ඩර් එකෙ රයිට් ක්ලික් කර terminal එක ඔපන් කර මේ පහත තැන පාවිච්චි කරන්න:
+Clone the repository: 
+```bash
+git clone https://github.com/Syntiox/Fashion-Shop-II.git
+cd Fashion-Shop-II
+```
+Install dependencies:
 ```bash
 npm install express multer cors body-parser
 ```
+Start the server:
+```bash
+node server.js
+```
 
-### 3. සර්වර් එක ආරම්භ කිරීම (Running the Server)
+# 🌐 Usage
+Once the server is running on port 3000, you can access:
+1. Home Page: http://localhost:3000/index.html
+2. Seller Center (Add Products): http://localhost:3000/add.html
 
-සර්වර් එක start කරන්න ක්‍රම දෙකක් තියෙනවා:
-* **CMD හරහා:** Terminal එකේ `node server.js` ලෙස type කරන්න.
-* **Shortcut එක හරහා:** Folder එකේ තියෙන **run.bat** file එක double-click කරන්න.
 
-### 4. වෙබ් අඩවියට පිවිසීම (Accessing the Site)
+### 📂 Project Structure 
 
-සර්වර් එක සාර්ථකව start වුණාම, ඔයාගේ browser එකේ පහත URLs පාවිච්චි කරන්න පුළුවන්:
-
-* **ප්‍රධාන URL එක (Home Page):** [http://localhost:3000/index.html](http://localhost:3000/index.html)
-* **ඇදුම් සහ කැටගරි ඇඩ් කරන URL එක:** [http://localhost:3000/add.html](http://localhost:3000/add.html)
-
-### 5. ප්‍රධාන විශේෂාංග
-
-* **Main Entry:** `index.html` හරහා තමයි site එකේ main layout එක පේන්නේ.
-* **Adding Products:** `add.html` පිටුව පාවිච්චි කරලා අලුත් කැටගරි සහ භාණ්ඩ ඇතුළත් කරන්න පුළුවන්. ඒ දත්ත `products.json` සහ `categories.json` වල ගබඩා වෙනවා.
-* **Customization:** `public` folder එක ඇතුළේ තියෙන HTML, CSS සහ JS files  ඕනෙ විදිහට වෙනස් කරලා UI එක අලුත් කරගන්න පුළුවන්.
-
-### 📂 Project Structure එක ගැන කෙටියෙන්
-
-* `server.js`: ප්‍රධාන backend සර්වර් එක.
-* `public/`: වෙබ් අඩවියේ UI එකට අදාළ සියලුම files (HTML, CSS, JS).
-* `run.bat`: සර්වර් එක ලේසියෙන්ම රන් කරන script එක.
+* `server.js`: The main backend server logic.
+* `public/`: Contains all frontend assets including HTML, CSS, and JS.
+* `products.json`: Storage for product information.
+* `run.bat`: Batch script to start the server easily.
 
 ## 📜 License
 This project is licensed under the MIT License.
@@ -101,6 +98,5 @@ This project is licensed under the MIT License.
   <img src="https://img.shields.io/badge/WhatsApp-Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp"/>
  </a>
 
-  <sub>© 2026 Syntiox Organization. All Rights Reserved.</sub>
 
 </div>
