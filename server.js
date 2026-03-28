@@ -5,7 +5,7 @@ const multer = require('multer');
 const cors = require('cors');
 
 
-//SERVER SETUP
+//SERVER SETUP/
 const app = express();
 app.use(cors());
 app.use(express.static('public')); 
