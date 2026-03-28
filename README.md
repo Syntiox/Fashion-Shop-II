@@ -1,5 +1,5 @@
 
-# Shop Project - Seller Center & E-Commerce 
+# Fashion-Shop-II - Seller Center & E-Commerce 
 
 
 මේක shopping site එකක backend සහ frontend එක එකතු කරලා හදපු project එකක්. මේක local machine එකක run කරලා අවශ්‍ය විදිහට test කරන්න පුළුවන්.
