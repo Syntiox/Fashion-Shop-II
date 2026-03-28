@@ -49,7 +49,7 @@ npm install express multer cors body-parser
 ## 📜 License
 This project is licensed under the MIT License.
 
-## URL=https://github.com/Syntiox/shop-project
+## URL=https://github.com/Syntiox/Fashion-Shop-II
 
 <div align="center">
   <hr>
